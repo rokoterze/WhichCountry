@@ -1,0 +1,99 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\rte\\Desktop\\WhichCountry\\WhichCountry\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9A64CAA6-75CE-4C7B-8617-94BA7C1225F0}|..\\WC.API\\WC.API.csproj|c:\\users\\rte\\desktop\\whichcountry\\wc.api\\controllers\\geolocationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC599CA6-224D-467C-BF86-9246B74A99A6}|..\\WC.Service\\WC.Service.csproj|c:\\users\\rte\\desktop\\whichcountry\\wc.service\\wcservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC599CA6-224D-467C-BF86-9246B74A99A6}|..\\WC.Service\\WC.Service.csproj|c:\\users\\rte\\desktop\\whichcountry\\wc.service\\iservice\\iwcservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 202,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GeoLocationController.cs",
+              "DocumentMoniker": "C:\\Users\\rte\\Desktop\\WhichCountry\\WC.API\\Controllers\\GeoLocationController.cs",
+              "RelativeDocumentMoniker": "..\\WC.API\\Controllers\\GeoLocationController.cs",
+              "ToolTip": "C:\\Users\\rte\\Desktop\\WhichCountry\\WC.API\\Controllers\\GeoLocationController.cs",
+              "RelativeToolTip": "..\\WC.API\\Controllers\\GeoLocationController.cs",
+              "ViewState": "AQIAALoAAAAAAAAAAAAIwHQAAABRAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-23T14:09:05.779Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "FloatingWindowState": {
+        "Id": "c6c25e18-e2cd-4cc7-a624-6019c03b78ff",
+        "Display": 1,
+        "X": 312,
+        "Y": 382,
+        "Width": 932,
+        "Height": 861,
+        "WindowState": 0
+      },
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IWcService.cs",
+              "DocumentMoniker": "C:\\Users\\rte\\Desktop\\WhichCountry\\WC.Service\\IService\\IWcService.cs",
+              "RelativeDocumentMoniker": "..\\WC.Service\\IService\\IWcService.cs",
+              "ToolTip": "C:\\Users\\rte\\Desktop\\WhichCountry\\WC.Service\\IService\\IWcService.cs",
+              "RelativeToolTip": "..\\WC.Service\\IService\\IWcService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAkAAABBAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-23T12:40:13.229Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "WcService.cs",
+              "DocumentMoniker": "C:\\Users\\rte\\Desktop\\WhichCountry\\WC.Service\\WcService.cs",
+              "RelativeDocumentMoniker": "..\\WC.Service\\WcService.cs",
+              "ToolTip": "C:\\Users\\rte\\Desktop\\WhichCountry\\WC.Service\\WcService.cs",
+              "RelativeToolTip": "..\\WC.Service\\WcService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-23T08:43:55.649Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

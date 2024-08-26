@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "bE20K6vtnQw=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\rte\\Desktop\\WhichCountry\\WhichCountry\\WC.Models\\WC.Models.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\rte\\.nuget\\packages\\csvhelper\\33.0.1\\csvhelper.33.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

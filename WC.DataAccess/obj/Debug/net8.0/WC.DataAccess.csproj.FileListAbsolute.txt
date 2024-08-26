@@ -1,0 +1,12 @@
+C:\Users\rte\Desktop\WhichCountry\WC.DataAccess\bin\Debug\net8.0\WC.DataAccess.deps.json
+C:\Users\rte\Desktop\WhichCountry\WC.DataAccess\bin\Debug\net8.0\WC.DataAccess.dll
+C:\Users\rte\Desktop\WhichCountry\WC.DataAccess\bin\Debug\net8.0\WC.DataAccess.pdb
+C:\Users\rte\Desktop\WhichCountry\WC.DataAccess\obj\Debug\net8.0\WC.DataAccess.csproj.AssemblyReference.cache
+C:\Users\rte\Desktop\WhichCountry\WC.DataAccess\obj\Debug\net8.0\WC.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rte\Desktop\WhichCountry\WC.DataAccess\obj\Debug\net8.0\WC.DataAccess.AssemblyInfoInputs.cache
+C:\Users\rte\Desktop\WhichCountry\WC.DataAccess\obj\Debug\net8.0\WC.DataAccess.AssemblyInfo.cs
+C:\Users\rte\Desktop\WhichCountry\WC.DataAccess\obj\Debug\net8.0\WC.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\rte\Desktop\WhichCountry\WC.DataAccess\obj\Debug\net8.0\WC.DataAccess.dll
+C:\Users\rte\Desktop\WhichCountry\WC.DataAccess\obj\Debug\net8.0\refint\WC.DataAccess.dll
+C:\Users\rte\Desktop\WhichCountry\WC.DataAccess\obj\Debug\net8.0\WC.DataAccess.pdb
+C:\Users\rte\Desktop\WhichCountry\WC.DataAccess\obj\Debug\net8.0\ref\WC.DataAccess.dll
