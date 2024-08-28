@@ -124,13 +124,13 @@
               "target": "Package",
               "version": "[13.0.1, )"
             },
-            "CsvHelper": {
-              "target": "Package",
-              "version": "[33.0.1, )"
-            },
             "Microsoft.AspNetCore.Http.Features": {
               "target": "Package",
               "version": "[5.0.17, )"
+            },
+            "Serilog": {
+              "target": "Package",
+              "version": "[4.0.1, )"
             }
           },
           "imports": [
