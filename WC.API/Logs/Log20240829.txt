@@ -1,0 +1,55 @@
+2024-08-29 13:21:53.460 +02:00 [ERR] IP address format is invalid: "1.0.0.5"
+2024-08-29 13:22:23.247 +02:00 [ERR] Failed to fetch data from database:
+Country Code: AU
+2024-08-29 13:58:57.438 +02:00 [ERR] Failed to fetch data from database:
+Country Code: AU
+2024-08-29 14:01:42.657 +02:00 [ERR] Failed to fetch data from database:
+Country Code: AU
+2024-08-29 14:02:29.266 +02:00 [ERR] Failed to fetch data from database:
+Country Code: AU
+2024-08-29 14:04:25.069 +02:00 [ERR] Failed to fetch data from database:
+Country Code: AU
+2024-08-29 14:10:46.170 +02:00 [INF] 1.0.0.5 converted to integer: 16777221
+2024-08-29 14:10:46.351 +02:00 [INF] 1.0.0.0 converted to integer: 16777216
+2024-08-29 14:10:46.354 +02:00 [INF] 1.0.0.255 converted to integer: 16777471
+2024-08-29 14:10:46.540 +02:00 [ERR] Failed to get IP address from database: 16777221
+ Missing type map configuration or unsupported mapping.
+
+Mapping types:
+GeoLocation -> GeoLocationResponse
+WC.DataAccess.Models.GeoLocation -> WC.Models.DTO.GeoLocationResponse
+2024-08-29 14:10:46.592 +02:00 [INF] IP address not found: 1.0.0.5
+2024-08-29 14:11:06.974 +02:00 [INF] 1.0.1.0 converted to integer: 16777472
+2024-08-29 14:11:07.090 +02:00 [INF] 1.0.0.0 converted to integer: 16777216
+2024-08-29 14:11:07.091 +02:00 [INF] 1.0.0.255 converted to integer: 16777471
+2024-08-29 14:11:07.093 +02:00 [INF] 1.0.1.0 converted to integer: 16777472
+2024-08-29 14:11:07.095 +02:00 [INF] 1.0.3.255 converted to integer: 16778239
+2024-08-29 14:11:07.352 +02:00 [ERR] Failed to get IP address from database: 16777472
+ Missing type map configuration or unsupported mapping.
+
+Mapping types:
+GeoLocation -> GeoLocationResponse
+WC.DataAccess.Models.GeoLocation -> WC.Models.DTO.GeoLocationResponse
+2024-08-29 14:11:07.355 +02:00 [INF] IP address not found: 1.0.1.0
+2024-08-29 14:13:33.960 +02:00 [INF] 1.0.1.0 converted to integer: 16777472
+2024-08-29 14:14:05.975 +02:00 [INF] 1.0.0.0 converted to integer: 16777216
+2024-08-29 14:14:07.743 +02:00 [INF] 1.0.0.255 converted to integer: 16777471
+2024-08-29 14:14:14.432 +02:00 [INF] 1.0.1.0 converted to integer: 16777472
+2024-08-29 14:14:18.247 +02:00 [INF] 1.0.3.255 converted to integer: 16778239
+2024-08-29 14:15:26.082 +02:00 [INF] 1.0.0.1 converted to integer: 16777217
+2024-08-29 14:15:29.848 +02:00 [INF] 1.0.0.0 converted to integer: 16777216
+2024-08-29 14:15:29.856 +02:00 [INF] 1.0.0.255 converted to integer: 16777471
+2024-08-29 14:17:34.108 +02:00 [INF] 1.0.0.1 converted to integer: 16777217
+2024-08-29 14:17:38.688 +02:00 [INF] 1.0.0.0 converted to integer: 16777216
+2024-08-29 14:17:38.690 +02:00 [INF] 1.0.0.255 converted to integer: 16777471
+2024-08-29 14:17:39.532 +02:00 [ERR] Failed to get country from database:
+Country code: AU
+2024-08-29 14:17:39.534 +02:00 [ERR] Country details are not found: AU
+2024-08-29 14:17:39.538 +02:00 [INF] GeoLocation: {"CountryCode":"AU","CountryName":null,"CountryRegion":null,"CountrySubregion":null,"FlagUrl":null,"$type":"GeoLocationResponse"}
+2024-08-29 14:20:13.556 +02:00 [INF] 1.0.0.1 converted to integer: 16777217
+2024-08-29 14:20:13.644 +02:00 [INF] 1.0.0.0 converted to integer: 16777216
+2024-08-29 14:20:13.648 +02:00 [INF] 1.0.0.255 converted to integer: 16777471
+2024-08-29 14:21:49.261 +02:00 [INF] 1.0.0.0 converted to integer: 16777216
+2024-08-29 14:21:53.390 +02:00 [INF] 1.0.0.0 converted to integer: 16777216
+2024-08-29 14:21:53.393 +02:00 [INF] 1.0.0.255 converted to integer: 16777471
+2024-08-29 14:22:05.659 +02:00 [INF] GeoLocation: {"CountryCode":"AU","CountryName":null,"CountryRegion":null,"CountrySubregion":null,"FlagUrl":null,"$type":"GeoLocationResponse"}

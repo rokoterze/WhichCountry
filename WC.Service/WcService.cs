@@ -20,11 +20,10 @@ namespace WC.Service
         {
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.AddProfile<AutoMapperProfile>();
+                cfg.AddProfile<AutoMapperConfig>();
             });
 
             _mapper = config.CreateMapper();
-
             _context = context;
             _httpClient = httpClient;
         }
@@ -70,9 +69,9 @@ namespace WC.Service
                 return null;
             }
         }
-        public async Task<List<GeoLocationResponse>?> GetGeoLocations(string countryCode)
+        public async Task<List<GeoLocationInfo>?> GetGeoLocations(string? countryCode)
         {
-            List<GeoLocationResponse> geoLocations = [];
+            List<GeoLocationInfo> geoLocations = [];
             try
             {
                 var result = await _context.GeoLocations.Where(x => x.CountryCode == countryCode).ToListAsync();
@@ -85,7 +84,7 @@ namespace WC.Service
                 {
                     foreach (var geoLocation in result)
                     {
-                        var mapped = _mapper.Map<GeoLocationResponse>(result);
+                        var mapped = _mapper.Map<GeoLocationInfo>(geoLocation);
                         geoLocations.Add(mapped);
                     }
                 }
@@ -123,7 +122,7 @@ namespace WC.Service
                 return null;
             }
         }
-        public async Task<bool> SaveCountry(string countryCode, string? provider)
+        public async Task<bool> SaveCountry(string? countryCode, string? provider)
         {
             var country = await CountryExists(countryCode);
 
@@ -153,7 +152,7 @@ namespace WC.Service
 
             return true;
         }
-        public async Task<bool> CountryExists(string countryCode)
+        public async Task<bool> CountryExists(string? countryCode)
         {
             try
             {
@@ -172,7 +171,7 @@ namespace WC.Service
 
             return true;
         }
-        public async Task<RestCountriesResponse?> GetCountryDetailsFromProvider(string countryCode, string? provider)
+        public async Task<RestCountriesResponse?> GetCountryDetailsFromProvider(string? countryCode, string? provider)
         {
             try
             {

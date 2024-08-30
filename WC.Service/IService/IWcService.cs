@@ -8,14 +8,14 @@ namespace WC.Service.IService
         #region GeoLocation
         GeoLocationResponse? GetGeoLocation(int numericIpAddress);
         Task<bool> SaveGeoLocation(GeoLocationRequest request);
-        Task<List<GeoLocationResponse>?> GetGeoLocations(string countryCode);
+        Task<List<GeoLocationInfo>?> GetGeoLocations(string? countryCode);
         #endregion
 
         #region CountryDetails
         Task<CountryDetailsResponse?> GetCountry(string? countryCode);
-        Task<bool> SaveCountry(string countryCode, string? provider);
-        Task<bool> CountryExists(string countryCode);
-        Task<RestCountriesResponse?> GetCountryDetailsFromProvider(string countryCode, string? provider);
+        Task<bool> SaveCountry(string? countryCode, string? provider);
+        Task<bool> CountryExists(string? countryCode);
+        Task<RestCountriesResponse?> GetCountryDetailsFromProvider(string? countryCode, string? provider);
         #endregion
 
         #region Helpers

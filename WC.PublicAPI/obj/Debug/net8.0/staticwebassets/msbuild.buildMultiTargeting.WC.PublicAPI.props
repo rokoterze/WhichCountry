@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\WC.PublicAPI.props" />
+</Project>

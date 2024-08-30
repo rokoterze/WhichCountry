@@ -1,7 +1,15 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\rte\\Desktop\\WhichCountry\\WhichCountry\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BC235CD6-E5A7-46CE-864F-1EB2E981AD23}|WC.Models\\WC.Models.csproj|c:\\users\\rte\\desktop\\whichcountry\\whichcountry\\wc.models\\wc.models.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{BC235CD6-E5A7-46CE-864F-1EB2E981AD23}|WC.Models\\WC.Models.csproj|solutionrelative:wc.models\\wc.models.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC599CA6-224D-467C-BF86-9246B74A99A6}|..\\WC.Service\\WC.Service.csproj|c:\\users\\rte\\desktop\\whichcountry\\wc.service\\iservice\\iwcservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +17,36 @@
       "DocumentGroups": [
         {
           "DockedWidth": 202,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "WC.Models",
+              "DocumentMoniker": "C:\\Users\\rte\\Desktop\\WhichCountry\\WhichCountry\\WC.Models\\WC.Models.csproj",
+              "RelativeDocumentMoniker": "WC.Models\\WC.Models.csproj",
+              "ToolTip": "C:\\Users\\rte\\Desktop\\WhichCountry\\WhichCountry\\WC.Models\\WC.Models.csproj",
+              "RelativeToolTip": "WC.Models\\WC.Models.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-08-30T12:52:17.914Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IWcService.cs",
+              "DocumentMoniker": "C:\\Users\\rte\\Desktop\\WhichCountry\\WC.Service\\IService\\IWcService.cs",
+              "RelativeDocumentMoniker": "..\\WC.Service\\IService\\IWcService.cs",
+              "ToolTip": "C:\\Users\\rte\\Desktop\\WhichCountry\\WC.Service\\IService\\IWcService.cs",
+              "RelativeToolTip": "..\\WC.Service\\IService\\IWcService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-30T12:49:58.322Z",
+              "EditorCaption": ""
             }
           ]
         }

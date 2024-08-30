@@ -1,0 +1,27 @@
+2024-08-30 12:17:12.833 +02:00 [INF] 1.0.0.5 converted to integer: 16777221
+2024-08-30 12:17:14.711 +02:00 [INF] 1.0.0.0 converted to integer: 16777216
+2024-08-30 12:17:14.714 +02:00 [INF] 1.0.0.255 converted to integer: 16777471
+2024-08-30 12:17:14.855 +02:00 [INF] GeoLocation: {"CountryCode":"AU","CountryName":null,"CountryRegion":null,"CountrySubregion":null,"FlagUrl":null,"$type":"GeoLocationResponse"}
+2024-08-30 12:50:38.246 +02:00 [INF] 1.0.0.5 converted to integer: 16777221
+2024-08-30 12:50:39.247 +02:00 [INF] 1.0.0.0 converted to integer: 16777216
+2024-08-30 12:50:39.249 +02:00 [INF] 1.0.0.255 converted to integer: 16777471
+2024-08-30 12:50:39.415 +02:00 [INF] GeoLocation: {"CountryCode":"AU","CountryName":null,"CountryRegion":null,"CountrySubregion":null,"FlagUrl":null,"$type":"GeoLocationResponse"}
+2024-08-30 13:08:19.368 +02:00 [INF] 1.0.0.5 converted to integer: 16777221
+2024-08-30 13:08:21.979 +02:00 [INF] 1.0.0.0 converted to integer: 16777216
+2024-08-30 13:08:21.985 +02:00 [INF] 1.0.0.255 converted to integer: 16777471
+2024-08-30 13:08:22.372 +02:00 [INF] GeoLocation: {"CountryCode":"AU","CountryName":null,"CountryRegion":null,"CountrySubregion":null,"FlagUrl":null,"$type":"GeoLocationResponse"}
+2024-08-30 14:41:34.335 +02:00 [INF] 1.0.0.5 converted to integer: 16777221
+2024-08-30 14:41:35.485 +02:00 [INF] 1.0.0.0 converted to integer: 16777216
+2024-08-30 14:41:35.488 +02:00 [INF] 1.0.0.255 converted to integer: 16777471
+2024-08-30 14:41:35.654 +02:00 [INF] GeoLocation: {"CountryCode":"AU","CountryName":null,"CountryRegion":null,"CountrySubregion":null,"FlagUrl":null,"$type":"GeoLocationResponse"}
+2024-08-30 14:42:33.327 +02:00 [INF] 1.0.0.5 converted to integer: 16777221
+2024-08-30 14:42:33.350 +02:00 [INF] 1.0.0.0 converted to integer: 16777216
+2024-08-30 14:42:33.351 +02:00 [INF] 1.0.0.255 converted to integer: 16777471
+2024-08-30 14:43:29.303 +02:00 [INF] 1.0.0.5 converted to integer: 16777221
+2024-08-30 14:43:30.712 +02:00 [INF] 1.0.0.0 converted to integer: 16777216
+2024-08-30 14:43:30.715 +02:00 [INF] 1.0.0.255 converted to integer: 16777471
+2024-08-30 14:43:45.144 +02:00 [INF] GeoLocation: {"CountryCode":"AU","CountryName":"Commonwealth of Australia","CountryRegion":"Oceania","CountrySubregion":"Australia and New Zealand","FlagUrl":"https://flagcdn.com/w320/au.png","$type":"GeoLocationResponse"}
+2024-08-30 14:48:34.929 +02:00 [INF] 1.0.0.5 converted to integer: 16777221
+2024-08-30 14:48:36.141 +02:00 [INF] 1.0.0.0 converted to integer: 16777216
+2024-08-30 14:48:36.143 +02:00 [INF] 1.0.0.255 converted to integer: 16777471
+2024-08-30 14:48:36.352 +02:00 [INF] GeoLocation: {"CountryCode":"AU","CountryName":"Commonwealth of Australia","CountryRegion":"Oceania","CountrySubregion":"Australia and New Zealand","FlagUrl":"https://flagcdn.com/w320/au.png","$type":"GeoLocationResponse"}
