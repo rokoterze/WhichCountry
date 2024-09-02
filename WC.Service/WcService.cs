@@ -1,9 +1,15 @@
 ﻿using AutoMapper;
+using Azure.Core;
+using BCrypt.Net;
 using CsvHelper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Serilog;
 using System.Globalization;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 using System.Text.Json;
 using WC.DataAccess.Models;
 using WC.Models.DTO;
@@ -104,16 +110,16 @@ namespace WC.Service
         {
             try
             {
-                var country = await _context.CountryDetails.Where(x => x.CountryCode == countryCode).FirstOrDefaultAsync();
+                var request = await _context.CountryDetails.Where(x => x.CountryCode == countryCode).FirstOrDefaultAsync();
 
-                if (country == null)
+                if (request == null)
                 {
                     return null;
                 }
                 else
                 {
-                    var mapped = _mapper.Map<CountryDetailsResponse>(country);
-                    return mapped;
+                    var response = _mapper.Map<CountryDetailsResponse>(request);
+                    return response;
                 }
             }
             catch
@@ -187,6 +193,69 @@ namespace WC.Service
             {
                 Log.Error($"Failed to retrieve country details from provider.\nCountry code: {countryCode}");
                 return null;
+            }
+        }
+        #endregion
+
+        #region User and Token
+        public string CreateToken(UserResponse user, string secret, int expiration)
+        {
+            List<Claim> claims =
+            [
+                new Claim(ClaimTypes.Name, user.Username!)
+            ];
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));
+
+            var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+
+            var token = new JwtSecurityToken(
+                claims: claims,
+                expires: DateTime.Now.AddMilliseconds(expiration),
+                signingCredentials: cred
+                );
+
+            var jwt = new JwtSecurityTokenHandler().WriteToken(token);
+
+            return jwt;
+        }
+        public async Task<UserResponse> GetUser(string username)
+        {
+            try
+            {
+                var request = await _context.Users.Where(x => x.Username == username).FirstOrDefaultAsync();
+
+                if (request == null)
+                {
+                    return null!;
+                }
+                else
+                {
+                    var response = _mapper.Map<UserResponse>(request);
+                    return response;
+                }
+            }
+            catch
+            {
+                Log.Error($"Failed to get user from database.");
+                return null!;
+            }
+        }
+        public async Task<bool> SaveUser(UserRequest user)
+        {
+            try
+            {
+                var map = _mapper.Map<User>(user);
+                map.PasswordHash = BCrypt.Net.BCrypt.HashPassword(user.Password);
+                
+                await _context.AddAsync(map);
+                await _context.SaveChangesAsync();
+
+                return true;
+            }
+            catch
+            {
+                Log.Error($"Failed to save user to database.");
+                return false;
             }
         }
         #endregion

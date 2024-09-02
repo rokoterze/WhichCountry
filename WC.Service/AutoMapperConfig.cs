@@ -16,6 +16,9 @@ namespace WC.Service
 
             CreateMap<CountryDetail, RestCountriesResponse>().ReverseMap();
             CreateMap<CountryDetail, CountryDetailsResponse>().ReverseMap();
+
+            CreateMap<UserRequest, User>();
+            CreateMap<User, UserResponse>();
         }
     }
 }

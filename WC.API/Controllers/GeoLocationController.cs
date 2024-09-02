@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Serilog;
@@ -11,24 +12,28 @@ using WC.Service.IService;
 namespace WC.API.Controllers
 {
     [Route("[controller]")]
+    [Authorize]
     [ApiController]
     public class GeoLocationController : ControllerBase
     {
         private readonly WhichCountryContext _context;
         private readonly IMapper _mapper;
         private readonly IWcService _wcService;
-        private readonly int _uploadSize;
-        private readonly string? _countryDetailsProvider;
         private readonly ILogger<GeoLocationController> _logger;
 
-        public GeoLocationController(WhichCountryContext context, IMapper mapper, IWcService wcService, IOptions<WcConfiguration> wcConfig, ILogger<GeoLocationController> logger)
+        private readonly string? _uploadSize;
+        private readonly string? _countryDetailsProvider;
+        
+
+        public GeoLocationController(WhichCountryContext context, IMapper mapper, IWcService wcService, ILogger<GeoLocationController> logger, IConfiguration configuration)
         {
             _context = context;
             _mapper = mapper;
             _wcService = wcService;
-            _uploadSize = wcConfig.Value.UploadSize;
-            _countryDetailsProvider = wcConfig.Value.CountryDetailsProvider;
             _logger = logger;
+
+            _countryDetailsProvider = configuration["WcConfiguration:countryDetailsProvider"];
+            _uploadSize = configuration["WcConfiguration:uploadSize"];
         }
 
         [HttpPost("UploadCSVFile")]
@@ -40,7 +45,7 @@ namespace WC.API.Controllers
             var listB = new List<GeoLocationInfo>(); // -> Contains mapped objects from listA [CSVUpload -> GeoLocation] 
             var listC = new List<GeoLocationInfo>(); // -> Contains GeoLocations from db by common countryCode
 
-            int uploadSize = _uploadSize; // -> Upload size from appsettings.json
+            int uploadSize = _uploadSize != null ? Int32.Parse(_uploadSize) : 0 ; // -> Upload size from appsettings.json
             int fileSize; // -> Imported CSV file list size
 
             int counterIndex = uploadSize;
@@ -107,6 +112,7 @@ namespace WC.API.Controllers
         }
 
         [HttpGet("IPAddressGeoLocation")]
+        [AllowAnonymous]
         public async Task<GeoLocationResponse?> IPAddressGeoLocation(string ipAddress)
         {
             //Check IP format

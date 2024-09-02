@@ -21,6 +21,14 @@
       {
          "Name": "[dbo].[GeoLocation]",
          "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Tokens]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Users]",
+         "ObjectType": 0
       }
    ],
    "UiHint": null,
