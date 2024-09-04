@@ -6,9 +6,9 @@ namespace WC.Models.DTO
     {
         [Index(0)]
         public string? StartIp { get; set; }
-        [Index(1)]
+        public int? StartIpnumber { get; set; }
         public string? EndIp { get; set; }
-        [Index(2)]
+        public int? EndIpnumber { get; set; }
         public string? CountryCode { get; set; }
     }
 }

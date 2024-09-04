@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WC.DataAccess")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a541b91e1e514f69b77a2e1a2e6ad6aea7c9071c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1f1e400349f66d8507472b19d334f9311ca69d9c")]
 [assembly: System.Reflection.AssemblyProductAttribute("WC.DataAccess")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WC.DataAccess")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

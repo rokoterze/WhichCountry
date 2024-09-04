@@ -39,29 +39,45 @@ namespace WC.API.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<string> Login([FromBody] UserRequest request)
+        public async Task<string> Login([FromBody] UserRequest userRequest)
         {
-            var userFromDb = await _wcService.GetUser(request.Username);
+            var user = await _wcService.GetUser(userRequest.Username);
 
-            if (userFromDb != null)
+            if (user != null)
             {
-                if (BCrypt.Net.BCrypt.Verify(request.Password, userFromDb.PasswordHash))
+                if (BCrypt.Net.BCrypt.Verify(userRequest.Password, user.PasswordHash))
                 {
-                    int expiration = Int32.Parse(_expiration!);
+                    var creation = DateTime.Now;
+                    var expiration = creation.AddMilliseconds(Int32.Parse(_expiration!));
 
-                    string token = _wcService.CreateToken(userFromDb, _secret!, expiration);
-                    
-                    //TODO: Save token to database (TokenRequest dto)
-                    return token;
+                    string tokenValue = _wcService.CreateToken(user, _secret!, expiration);
+
+                    if (tokenValue != null)
+                    {
+                        var token = new TokenRequest
+                        {
+                            UserId = user.Id,
+                            CreatedAt = creation,
+                            ValidUntil = expiration,
+                            TokenValue = tokenValue
+                        };
+
+                        await _wcService.SaveToken(token);
+                        return token.TokenValue;
+                    }
+                    else
+                    {
+                        return "Token not created!";
+                    }
                 }
-                else 
+                else
                 {
-                    return null!;
+                    return "Password does not match!";
                 }
             }
-            else 
+            else
             {
-                return null!;
+                return "User does not exist!";
             }
         }
     }

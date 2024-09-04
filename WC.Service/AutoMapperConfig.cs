@@ -9,6 +9,7 @@ namespace WC.Service
         public AutoMapperConfig()
         {
             CreateMap<GeoLocationRequest, GeoLocationInfo>().ReverseMap();
+            CreateMap<GeoLocationRequest, GeoLocation>();
             CreateMap<GeoLocationInfo, CsvUpload>().ReverseMap();
 
             CreateMap<GeoLocation, GeoLocationInfo>().ReverseMap();
@@ -19,6 +20,8 @@ namespace WC.Service
 
             CreateMap<UserRequest, User>();
             CreateMap<User, UserResponse>();
+
+            CreateMap<TokenRequest, Token>();
         }
     }
 }

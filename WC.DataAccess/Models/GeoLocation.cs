@@ -8,7 +8,11 @@ public partial class GeoLocation
 
     public string StartIp { get; set; }
 
+    public int? StartIpnumber { get; set; }
+
     public string EndIp { get; set; }
+
+    public int? EndIpnumber { get; set; }
 
     public string CountryCode { get; set; }
 }

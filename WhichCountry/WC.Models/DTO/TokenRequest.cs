@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WC.Models.DTO
+﻿namespace WC.Models.DTO
 {
     public class TokenRequest
     {
+        public int UserId { get; set; }
+
+        public DateTime CreatedAt { get; set; } 
+
+        public DateTime ValidUntil { get; set; }
+
+        public string? TokenValue { get; set; }
     }
 }

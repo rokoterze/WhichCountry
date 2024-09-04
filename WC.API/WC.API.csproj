@@ -18,4 +18,8 @@
     <ProjectReference Include="..\WC.Service\WC.Service.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Logs\" />
+  </ItemGroup>
+
 </Project>

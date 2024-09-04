@@ -1,6 +1,4 @@
 ﻿using AutoMapper;
-using Azure.Core;
-using BCrypt.Net;
 using CsvHelper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
@@ -37,6 +35,9 @@ namespace WC.Service
         #region GeoLocation
         public async Task<bool> SaveGeoLocation(GeoLocationRequest request)
         {
+            request.StartIpnumber = ConvertIpToNumber(request.StartIp!);
+            request.EndIpnumber = ConvertIpToNumber(request.EndIp!);
+
             try
             {
                 var map = _mapper.Map<GeoLocation>(request);
@@ -55,10 +56,8 @@ namespace WC.Service
         {
             try
             {
-                var geoLocation = _context.GeoLocations
-               .AsEnumerable()
-               .Where(x => ConvertIpToNumber(x.StartIp) <= numericIpAddress && ConvertIpToNumber(x.EndIp) >= numericIpAddress).FirstOrDefault();
-
+                var geoLocation = _context.GeoLocations.Where(x => x.StartIpnumber <= numericIpAddress && x.EndIpnumber >= numericIpAddress).FirstOrDefault();
+                
                 if (geoLocation == null)
                 {
                     return null;
@@ -198,7 +197,7 @@ namespace WC.Service
         #endregion
 
         #region User and Token
-        public string CreateToken(UserResponse user, string secret, int expiration)
+        public string CreateToken(UserResponse user, string secret, DateTime expiration)
         {
             List<Claim> claims =
             [
@@ -210,7 +209,7 @@ namespace WC.Service
 
             var token = new JwtSecurityToken(
                 claims: claims,
-                expires: DateTime.Now.AddMilliseconds(expiration),
+                expires: expiration,
                 signingCredentials: cred
                 );
 
@@ -246,7 +245,7 @@ namespace WC.Service
             {
                 var map = _mapper.Map<User>(user);
                 map.PasswordHash = BCrypt.Net.BCrypt.HashPassword(user.Password);
-                
+
                 await _context.AddAsync(map);
                 await _context.SaveChangesAsync();
 
@@ -255,6 +254,23 @@ namespace WC.Service
             catch
             {
                 Log.Error($"Failed to save user to database.");
+                return false;
+            }
+        }
+        public async Task<bool> SaveToken(TokenRequest token)
+        {
+            try
+            {
+                var map = _mapper.Map<Token>(token);
+
+                await _context.AddAsync(map);
+                await _context.SaveChangesAsync();
+
+                return true;
+            }
+            catch
+            {
+                Log.Error($"Failed to save token to database.");
                 return false;
             }
         }
@@ -285,7 +301,6 @@ namespace WC.Service
 
                 int bitwise = (int)ipParts[0] << 24 | (int)ipParts[1] << 16 | (int)ipParts[2] << 8 | (int)ipParts[3];
 
-                Log.Information($"{ipAddress} converted to integer: {bitwise}");
                 return bitwise;
             }
             catch (Exception ex)

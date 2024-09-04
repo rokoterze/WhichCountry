@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Http;
-using WC.DataAccess.Models;
 using WC.Models.DTO;
 
 namespace WC.Service.IService
@@ -22,12 +21,13 @@ namespace WC.Service.IService
         #region User and Token
         Task<bool> SaveUser(UserRequest user);
         Task<UserResponse> GetUser(string username);
+        Task<bool> SaveToken(TokenRequest token);
         #endregion
 
         #region Helpers
         List<CsvUpload>? ConvertCSVToList(IFormFile request);
         int ConvertIpToNumber(string ipAddress);
-        string CreateToken(UserResponse user, string secret, int expiration);
+        string CreateToken(UserResponse user, string secret, DateTime expiration);
         #endregion
     }
 }

@@ -1,12 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
 using Serilog;
+using System.Diagnostics;
 using System.Net;
 using WC.DataAccess.Models;
 using WC.Models.DTO;
-using WC.Service;
 using WC.Service.IService;
 
 namespace WC.API.Controllers
@@ -36,10 +35,13 @@ namespace WC.API.Controllers
             _uploadSize = configuration["WcConfiguration:uploadSize"];
         }
 
-        [HttpPost("UploadCSVFile")]
-        public async Task<bool> UploadCSV(IFormFile file)
+        [HttpPost("[action]")]
+        public async Task<Counter> UploadCSVFile(IFormFile file)
         {
-            //TODO: Return Counter object instead bool
+            Stopwatch stopwatch = new();
+            stopwatch.Start();
+
+            Counter counter = new();
 
             var listA = new List<CsvUpload>(); // -> Contains chunk of objects from file. Chunks is defined by uploadSize
             var listB = new List<GeoLocationInfo>(); // -> Contains mapped objects from listA [CSVUpload -> GeoLocation] 
@@ -53,6 +55,11 @@ namespace WC.API.Controllers
 
             var fileList = _wcService.ConvertCSVToList(file);
             fileSize = fileList != null ? fileList.Count : 0;
+
+            counter.FileSize = fileSize;
+            counter.Duplicates = 0;
+            counter.Inserted = 0;
+            counter.Failed = 0;
 
             if (fileSize > uploadSize)
             {
@@ -76,6 +83,10 @@ namespace WC.API.Controllers
                         {
                             listB.Add(mappedGL);
                         }
+                        else 
+                        {
+                            counter.Duplicates++;
+                        }
                     }
 
                     foreach (var b in listB)
@@ -85,12 +96,24 @@ namespace WC.API.Controllers
                         if (!listC.Contains(b))
                         {
                             var mappedGLR = _mapper.Map<GeoLocationRequest>(b);
-                            if (await _wcService.SaveGeoLocation(mappedGLR))
+
+                            var result = await _wcService.SaveGeoLocation(mappedGLR);
+
+                            if (result)
                             {
+                                counter.Inserted++;
                                 saveGL = 1;
+                            }
+                            else 
+                            {
+                                counter.Failed++;
                             }
 
                             await _wcService.SaveCountry(b.CountryCode, _countryDetailsProvider);
+                        }
+                        if (listC.Contains(b))
+                        { 
+                            counter.Duplicates++;
                         }
                         if (saveGL == 1)
                         {
@@ -108,14 +131,17 @@ namespace WC.API.Controllers
                     endIndex = Math.Min(counterIndex, fileSize);
                 }
             }
-            return true;
+            stopwatch.Stop();
+
+            TimeSpan stopwatchElapsed = stopwatch.Elapsed;
+            Log.Information($"Time elapsed: {stopwatchElapsed}");
+            return counter;
         }
 
-        [HttpGet("IPAddressGeoLocation")]
+        [HttpGet("[action]")]
         [AllowAnonymous]
         public async Task<GeoLocationResponse?> IPAddressGeoLocation(string ipAddress)
         {
-            //Check IP format
             if (!IPAddress.TryParse(ipAddress, out _))
             {
                 Log.Error($"IP address format is invalid: {ipAddress}");
@@ -124,7 +150,6 @@ namespace WC.API.Controllers
             }
 
             var numericIp = _wcService.ConvertIpToNumber(ipAddress);
-
             var geoLocation = _wcService.GetGeoLocation(numericIp);
 
             if (geoLocation == null)
