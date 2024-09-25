@@ -15,7 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\WC.DataAccess\WC.DataAccess.csproj" />
-    <ProjectReference Include="..\WhichCountry\WC.Models\WC.Models.csproj" />
+    <ProjectReference Include="..\WC.Models\WC.Models.csproj" />
   </ItemGroup>
 
 </Project>

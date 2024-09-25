@@ -1,0 +1,9 @@
+2024-09-25 09:13:23.730 +02:00 [INF] GeoLocation: {"CountryCode":"AU","CountryName":"Commonwealth of Australia","CountryRegion":"Oceania","CountrySubregion":"Australia and New Zealand","FlagUrl":"https://flagcdn.com/w320/au.png","$type":"GeoLocationResponse"}
+2024-09-25 10:52:26.816 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocationResponse
+2024-09-25 12:37:07.650 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocationResponse
+2024-09-25 12:41:42.310 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocationResponse
+2024-09-25 13:24:23.220 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocationResponse
+2024-09-25 14:57:01.656 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocationResponse
+2024-09-25 15:11:53.781 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocationResponse
+2024-09-25 15:14:06.323 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocationResponse
+2024-09-25 15:23:35.018 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocationResponse

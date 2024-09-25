@@ -25,7 +25,7 @@ public partial class WhichCountryContext : DbContext
     {
         modelBuilder.Entity<CountryDetail>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__CountryD__3214EC274E20E52B");
+            entity.HasKey(e => e.Id).HasName("PK__CountryD__3214EC271474178B");
 
             entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.CountryCode)
@@ -38,6 +38,9 @@ public partial class WhichCountryContext : DbContext
                 .HasMaxLength(128)
                 .IsUnicode(false);
             entity.Property(e => e.CountrySubregion)
+                .HasMaxLength(128)
+                .IsUnicode(false);
+            entity.Property(e => e.FileName)
                 .HasMaxLength(128)
                 .IsUnicode(false);
             entity.Property(e => e.FlagUrl)

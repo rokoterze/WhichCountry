@@ -1,0 +1,20 @@
+2024-09-05 14:30:01.632 +02:00 [INF] Time elapsed: 00:00:51.0926363
+2024-09-05 14:34:20.030 +02:00 [INF] Time elapsed: 00:00:01.8746943
+2024-09-05 14:45:55.265 +02:00 [INF] Time elapsed: 00:00:04.4669899
+2024-09-05 15:09:07.174 +02:00 [INF] Time elapsed: 00:00:04.3945003
+2024-09-05 15:09:59.023 +02:00 [INF] Time elapsed: 00:00:02.4253465
+2024-09-05 15:11:41.646 +02:00 [ERR] Failed to retrieve country details from provider.
+Country code: ZZ
+2024-09-05 15:11:41.650 +02:00 [INF] Failed to retrieve country details for ZZ.
+2024-09-05 15:15:42.434 +02:00 [ERR] Failed to retrieve country details from provider.
+Country code: ZZ
+2024-09-05 15:15:42.466 +02:00 [INF] Failed to retrieve country details for ZZ.
+2024-09-05 15:16:05.832 +02:00 [INF] Time elapsed: 00:00:25.7149096
+2024-09-05 15:18:28.110 +02:00 [ERR] Failed to retrieve country details from provider.
+Country code: ZZ
+2024-09-05 15:18:28.133 +02:00 [INF] Failed to retrieve country details for ZZ.
+2024-09-05 15:18:52.906 +02:00 [INF] Time elapsed: 00:00:26.3129357
+2024-09-05 15:25:04.938 +02:00 [ERR] Failed to retrieve country details from provider.
+Country code: ZZ
+2024-09-05 15:25:05.155 +02:00 [INF] Failed to retrieve country details for ZZ.
+2024-09-05 16:23:48.491 +02:00 [INF] Time elapsed: 01:03:24.8652227

@@ -1,16 +1,20 @@
 ﻿using AutoMapper;
+using Azure.Core;
 using CsvHelper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
 using System.Globalization;
 using System.IdentityModel.Tokens.Jwt;
+using System.Net;
 using System.Security.Claims;
 using System.Text;
 using System.Text.Json;
 using WC.DataAccess.Models;
-using WC.Models.DTO;
+using WC.Models.DTO.Request;
+using WC.Models.DTO.Response;
 using WC.Service.IService;
 
 namespace WC.Service
@@ -33,74 +37,72 @@ namespace WC.Service
         }
 
         #region GeoLocation
-        public async Task<bool> SaveGeoLocation(GeoLocationRequest request)
+        public async Task<bool> GeoLocationInsert(GeoLocationRequest request)
         {
             request.StartIpnumber = ConvertIpToNumber(request.StartIp!);
             request.EndIpnumber = ConvertIpToNumber(request.EndIp!);
 
             try
             {
-                var map = _mapper.Map<GeoLocation>(request);
+                var geoLocation = _mapper.Map<GeoLocation>(request);
 
-                await _context.AddAsync(map);
+                await _context.AddAsync(geoLocation);
                 await _context.SaveChangesAsync();
             }
             catch
             {
-                Log.Error($"Failed to save geolocation:\n{request.CountryCode}, {request.StartIp}, {request.EndIp}");
+                Log.Error($"Failed to save geolocation: Country Code: {request.CountryCode}, Start IP: {request.StartIp}, End IP: {request.EndIp}");
                 return false;
             }
             return true;
         }
-        public GeoLocationResponse? GetGeoLocation(int numericIpAddress)
+        public async Task<GeoLocationResponse?> GetGeoLocation(int numericIpAddress)
         {
             try
             {
-                var geoLocation = _context.GeoLocations.Where(x => x.StartIpnumber <= numericIpAddress && x.EndIpnumber >= numericIpAddress).FirstOrDefault();
-                
+                var geoLocation = await _context.GeoLocations
+                    .Where(x => x.StartIpnumber <= numericIpAddress && x.EndIpnumber >= numericIpAddress)
+                    .FirstOrDefaultAsync();
+
                 if (geoLocation == null)
                 {
+                    Log.Warning($"Geo Location with numeric IP address: {numericIpAddress} not found.");
                     return null;
                 }
                 else
                 {
-                    var mapper = _mapper.Map<GeoLocationResponse>(geoLocation);
-                    return mapper;
+                    var response = _mapper.Map<GeoLocationResponse>(geoLocation);
+                    return response;
                 }
             }
             catch (Exception ex)
             {
-                Log.Error($"Failed to get IP address from database: {numericIpAddress}\n {ex.Message}");
+                Log.Error($"Failed to get Geo Location with numeric IP address: {numericIpAddress} from database.\n {ex.Message}");
                 return null;
             }
         }
         public async Task<List<GeoLocationInfo>?> GetGeoLocations(string? countryCode)
         {
-            List<GeoLocationInfo> geoLocations = [];
             try
             {
-                var result = await _context.GeoLocations.Where(x => x.CountryCode == countryCode).ToListAsync();
+                var geoLocations = await _context.GeoLocations
+                    .Where(x => x.CountryCode == countryCode)
+                    .ToListAsync();
 
-                if (result == null)
+                if (geoLocations == null)
                 {
+                    Log.Warning($"Geo Location with Country Code: {countryCode} not found.");
                     return null;
                 }
-                else
-                {
-                    foreach (var geoLocation in result)
-                    {
-                        var mapped = _mapper.Map<GeoLocationInfo>(geoLocation);
-                        geoLocations.Add(mapped);
-                    }
-                }
+
+                var response = _mapper.Map<List<GeoLocationInfo>>(geoLocations);
+                return response;
             }
             catch
             {
                 Log.Error($"Failed to fetch data from database:\nCountry Code: {countryCode}");
                 return null;
             }
-
-            return geoLocations;
         }
         #endregion
 
@@ -109,55 +111,64 @@ namespace WC.Service
         {
             try
             {
-                var request = await _context.CountryDetails.Where(x => x.CountryCode == countryCode).FirstOrDefaultAsync();
+                var country = await _context.CountryDetails.Where(x => x.CountryCode == countryCode).FirstOrDefaultAsync();
 
-                if (request == null)
+                if (country == null)
                 {
+                    Log.Warning($"Country with Country Code: {countryCode} not found.");
                     return null;
                 }
                 else
                 {
-                    var response = _mapper.Map<CountryDetailsResponse>(request);
+                    var response = _mapper.Map<CountryDetailsResponse>(country);
                     return response;
                 }
             }
             catch
             {
-                Log.Error($"Failed to get country from database:\nCountry code: {countryCode}");
+                Log.Error($"Failed to get country from database. Country code: {countryCode}");
                 return null;
             }
         }
-        public async Task<bool> SaveCountry(string? countryCode, string? provider)
+        public async Task<bool> CountryInsert(string? countryCode, string? provider, string? imagePath, string? extension)
         {
-            var country = await CountryExists(countryCode);
+            var countryExist = await DoesCountryExist(countryCode);
 
-            if (!country)
+            if (!countryExist)
             {
-                var result = await GetCountryDetailsFromProvider(countryCode, provider);
+                var countryFromProvider = await GetCountryDetailsFromProvider(countryCode, provider);
 
-                if (result == null)
+                if (countryFromProvider == null)
                 {
-                    Log.Information($"Failed to retrieve country details for {countryCode}.");
+                    Log.Information($"Failed to retrieve country details from provider for Country Code: {countryCode}.");
                     return false;
                 }
 
                 try
                 {
-                    var map = _mapper.Map<CountryDetail>(result);
+                    countryFromProvider.FileName = $"{countryFromProvider.CountryCode}{extension}";
 
-                    await _context.AddAsync(map);
+                    var countryDetail = _mapper.Map<CountryDetail>(countryFromProvider);
+
+                    var image = await DownloadImage(countryDetail.FlagUrl, imagePath!, countryDetail.CountryCode, extension!);
+                    if (!image)
+                    {
+                        Log.Warning($"Failed to download image from {countryDetail.FlagUrl} for Country Code: {countryDetail.CountryCode}");
+                    }
+
+                    await _context.AddAsync(countryDetail);
                     await _context.SaveChangesAsync();
                 }
                 catch
                 {
-                    Log.Error($"Failed to save country details.\nCountry code: {countryCode}.");
+                    Log.Error($"Failed to save country details for Country Code: {countryCode}.");
                     return false;
                 }
             }
 
             return true;
         }
-        public async Task<bool> CountryExists(string? countryCode)
+        public async Task<bool> DoesCountryExist(string? countryCode)
         {
             try
             {
@@ -170,7 +181,7 @@ namespace WC.Service
             }
             catch
             {
-                Log.Error($"Failed to retrieve response.\nCountry code: {countryCode}.");
+                Log.Error($"Failed to retrieve response for Country code: {countryCode}.");
                 return false;
             }
 
@@ -184,20 +195,20 @@ namespace WC.Service
                 response.EnsureSuccessStatusCode();
 
                 string responseBody = await response.Content.ReadAsStringAsync();
-                var deserialized = JsonSerializer.Deserialize<List<RestCountriesResponse>>(responseBody);
+                var deserialized = JsonSerializer.Deserialize<List<RestCountriesResponse>>(responseBody)!;
 
                 return deserialized?.FirstOrDefault();
             }
             catch
             {
-                Log.Error($"Failed to retrieve country details from provider.\nCountry code: {countryCode}");
+                Log.Error($"Failed to retrieve country details from provider for Country Code: {countryCode}");
                 return null;
             }
         }
         #endregion
 
         #region User and Token
-        public string CreateToken(UserResponse user, string secret, DateTime expiration)
+        public string GenerateToken(UserResponse user, string secret, DateTime expiration)
         {
             List<Claim> claims =
             [
@@ -239,14 +250,14 @@ namespace WC.Service
                 return null!;
             }
         }
-        public async Task<bool> SaveUser(UserRequest user)
+        public async Task<bool> UserInsert(UserRequest request)
         {
             try
             {
-                var map = _mapper.Map<User>(user);
-                map.PasswordHash = BCrypt.Net.BCrypt.HashPassword(user.Password);
+                var user = _mapper.Map<User>(request);
+                user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(request.Password);
 
-                await _context.AddAsync(map);
+                await _context.AddAsync(user);
                 await _context.SaveChangesAsync();
 
                 return true;
@@ -257,13 +268,13 @@ namespace WC.Service
                 return false;
             }
         }
-        public async Task<bool> SaveToken(TokenRequest token)
+        public async Task<bool> TokenInsert(TokenRequest request)
         {
             try
             {
-                var map = _mapper.Map<Token>(token);
+                var token = _mapper.Map<Token>(request);
 
-                await _context.AddAsync(map);
+                await _context.AddAsync(token);
                 await _context.SaveChangesAsync();
 
                 return true;
@@ -286,8 +297,9 @@ namespace WC.Service
                 using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
                 upload = csv.GetRecords<CsvUpload>().ToList();
             }
-            catch
+            catch(Exception ex)
             {
+                Log.Error($"CSV file convert failed:" + ex.Message);
                 return upload;
             }
             return upload;
@@ -309,6 +321,27 @@ namespace WC.Service
                 return 0;
             }
         }
+        public async Task<bool> DownloadImage(string url, string outputFolder, string outputFileName, string extension)
+        {
+            try
+            {
+                using Stream fileStream = await _httpClient.GetStreamAsync(url);
+                Directory.CreateDirectory(outputFolder);
+                string path = Path.Combine(outputFolder, $"{outputFileName}{extension}");
+
+                using FileStream outputFileStream = new(path, FileMode.CreateNew);
+
+                await fileStream.CopyToAsync(outputFileStream);
+                return true;
+            }
+            catch (Exception ex) 
+            {
+                Log.Error($"Download Image operation failed: {ex.Message}");
+                return false;
+            }
+        }
         #endregion
+
+
     }
 }

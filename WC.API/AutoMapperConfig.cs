@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using WC.DataAccess.Models;
-using WC.Models.DTO;
+using WC.Models.DTO.Request;
+using WC.Models.DTO.Response;
 
 namespace WC.API
 {

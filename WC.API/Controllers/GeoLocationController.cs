@@ -1,17 +1,16 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
 using System.Diagnostics;
 using System.Net;
 using WC.DataAccess.Models;
-using WC.Models.DTO;
+using WC.Models.DTO.Request;
+using WC.Models.DTO.Response;
 using WC.Service.IService;
 
 namespace WC.API.Controllers
 {
     [Route("[controller]")]
-    [Authorize]
     [ApiController]
     public class GeoLocationController : ControllerBase
     {
@@ -22,6 +21,8 @@ namespace WC.API.Controllers
 
         private readonly string? _uploadSize;
         private readonly string? _countryDetailsProvider;
+        private readonly string? _imagePath;
+        private readonly string? _imageExtensionType;
         
 
         public GeoLocationController(WhichCountryContext context, IMapper mapper, IWcService wcService, ILogger<GeoLocationController> logger, IConfiguration configuration)
@@ -31,8 +32,10 @@ namespace WC.API.Controllers
             _wcService = wcService;
             _logger = logger;
 
-            _countryDetailsProvider = configuration["WcConfiguration:countryDetailsProvider"];
-            _uploadSize = configuration["WcConfiguration:uploadSize"];
+            _countryDetailsProvider = configuration["CountryDetailsProvider:Url"];
+            _uploadSize = configuration["Configuration:UploadSize"];
+            _imagePath = configuration["Images:ImagePath"];
+            _imageExtensionType = configuration["Images:ImageExtensionType"];
         }
 
         [HttpPost("[action]")]
@@ -83,7 +86,7 @@ namespace WC.API.Controllers
                         {
                             listB.Add(mappedGL);
                         }
-                        else 
+                        else
                         {
                             counter.Duplicates++;
                         }
@@ -97,22 +100,22 @@ namespace WC.API.Controllers
                         {
                             var mappedGLR = _mapper.Map<GeoLocationRequest>(b);
 
-                            var result = await _wcService.SaveGeoLocation(mappedGLR);
+                            var result = await _wcService.GeoLocationInsert(mappedGLR);
 
                             if (result)
                             {
                                 counter.Inserted++;
                                 saveGL = 1;
                             }
-                            else 
+                            else
                             {
                                 counter.Failed++;
                             }
 
-                            await _wcService.SaveCountry(b.CountryCode, _countryDetailsProvider);
+                            await _wcService.CountryInsert(b.CountryCode, _countryDetailsProvider, _imagePath, _imageExtensionType);
                         }
                         if (listC.Contains(b))
-                        { 
+                        {
                             counter.Duplicates++;
                         }
                         if (saveGL == 1)
@@ -131,6 +134,11 @@ namespace WC.API.Controllers
                     endIndex = Math.Min(counterIndex, fileSize);
                 }
             }
+            else 
+            {
+                //TODO: Implement if filesize is smaller than upload size.
+                return null!;
+            }
             stopwatch.Stop();
 
             TimeSpan stopwatchElapsed = stopwatch.Elapsed;
@@ -139,7 +147,6 @@ namespace WC.API.Controllers
         }
 
         [HttpGet("[action]")]
-        [AllowAnonymous]
         public async Task<GeoLocationResponse?> IPAddressGeoLocation(string ipAddress)
         {
             if (!IPAddress.TryParse(ipAddress, out _))
@@ -150,11 +157,11 @@ namespace WC.API.Controllers
             }
 
             var numericIp = _wcService.ConvertIpToNumber(ipAddress);
-            var geoLocation = _wcService.GetGeoLocation(numericIp);
+            var geoLocation = await _wcService.GetGeoLocation(numericIp);
 
             if (geoLocation == null)
             {
-                Log.Information($"IP address not found: {ipAddress}");
+                Log.Warning($"IP address not found: {ipAddress}");
 
                 return null;
             }
@@ -175,7 +182,7 @@ namespace WC.API.Controllers
                 FlagUrl = countryDetails?.FlagUrl
             };
 
-            Log.Information("GeoLocation: {@response}", response);
+            Log.Information($"GeoLocation: {response}");
 
             return response;
         }

@@ -18,4 +18,6 @@ public partial class CountryDetail
     public string CountrySubregion { get; set; }
 
     public string FlagUrl { get; set; }
+
+    public string FileName { get; set; }
 }

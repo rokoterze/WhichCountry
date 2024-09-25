@@ -5,7 +5,7 @@
     "version": "1.0"
   },
   "paths": {
-    "/GeoLocation/UploadCSV": {
+    "/GeoLocation/UploadCSVFile": {
       "post": {
         "tags": [
           "GeoLocation"
@@ -36,17 +36,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "type": "boolean"
+                  "$ref": "#/components/schemas/Counter"
                 }
               },
               "application/json": {
                 "schema": {
-                  "type": "boolean"
+                  "$ref": "#/components/schemas/Counter"
                 }
               },
               "text/json": {
                 "schema": {
-                  "type": "boolean"
+                  "$ref": "#/components/schemas/Counter"
                 }
               }
             }
@@ -95,6 +95,28 @@
   },
   "components": {
     "schemas": {
+      "Counter": {
+        "type": "object",
+        "properties": {
+          "fileSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "duplicates": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "inserted": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "failed": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "GeoLocationResponse": {
         "type": "object",
         "properties": {

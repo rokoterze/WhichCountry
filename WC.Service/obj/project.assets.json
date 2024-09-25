@@ -3001,8 +3001,8 @@
     },
     "WC.Models/1.0.0": {
       "type": "project",
-      "path": "../WhichCountry/WC.Models/WC.Models.csproj",
-      "msbuildProject": "../WhichCountry/WC.Models/WC.Models.csproj"
+      "path": "../WC.Models/WC.Models.csproj",
+      "msbuildProject": "../WC.Models/WC.Models.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -3046,8 +3046,8 @@
             "C:\\Users\\rte\\Desktop\\WhichCountry\\WC.DataAccess\\WC.DataAccess.csproj": {
               "projectPath": "C:\\Users\\rte\\Desktop\\WhichCountry\\WC.DataAccess\\WC.DataAccess.csproj"
             },
-            "C:\\Users\\rte\\Desktop\\WhichCountry\\WhichCountry\\WC.Models\\WC.Models.csproj": {
-              "projectPath": "C:\\Users\\rte\\Desktop\\WhichCountry\\WhichCountry\\WC.Models\\WC.Models.csproj"
+            "C:\\Users\\rte\\Desktop\\WhichCountry\\WC.Models\\WC.Models.csproj": {
+              "projectPath": "C:\\Users\\rte\\Desktop\\WhichCountry\\WC.Models\\WC.Models.csproj"
             }
           }
         }

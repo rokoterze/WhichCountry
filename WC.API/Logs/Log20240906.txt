@@ -1,0 +1,14 @@
+2024-09-06 09:19:33.820 +02:00 [INF] GeoLocation: {"CountryCode":"AU","CountryName":"Commonwealth of Australia","CountryRegion":"Oceania","CountrySubregion":"Australia and New Zealand","FlagUrl":"https://flagcdn.com/w320/au.png","$type":"GeoLocationResponse"}
+2024-09-06 11:10:30.166 +02:00 [INF] GeoLocation: {"CountryCode":"AU","CountryName":"Commonwealth of Australia","CountryRegion":"Oceania","CountrySubregion":"Australia and New Zealand","FlagUrl":"https://flagcdn.com/w320/au.png","$type":"GeoLocationResponse"}
+2024-09-06 11:17:07.900 +02:00 [INF] GeoLocation: {"CountryCode":"AU","CountryName":"Commonwealth of Australia","CountryRegion":"Oceania","CountrySubregion":"Australia and New Zealand","FlagUrl":"https://flagcdn.com/w320/au.png","$type":"GeoLocationResponse"}
+2024-09-06 11:20:32.529 +02:00 [ERR] IP address format is invalid: 1.0..05
+2024-09-06 11:20:45.858 +02:00 [INF] GeoLocation: {"CountryCode":"AU","CountryName":"Commonwealth of Australia","CountryRegion":"Oceania","CountrySubregion":"Australia and New Zealand","FlagUrl":"https://flagcdn.com/w320/au.png","$type":"GeoLocationResponse"}
+2024-09-06 15:54:51.633 +02:00 [INF] Time elapsed: 00:00:02.4214545
+2024-09-06 15:55:40.151 +02:00 [INF] Time elapsed: 00:00:01.9711648
+2024-09-06 15:56:01.916 +02:00 [INF] Time elapsed: 00:00:00.1207044
+2024-09-06 15:56:10.736 +02:00 [ERR] Failed to retrieve country details from provider.
+Country code: ZZ
+2024-09-06 15:56:10.739 +02:00 [INF] Failed to retrieve country details for ZZ.
+2024-09-06 16:00:25.101 +02:00 [ERR] Failed to retrieve country details from provider.
+Country code: ZZ
+2024-09-06 16:00:25.105 +02:00 [INF] Failed to retrieve country details for ZZ.
