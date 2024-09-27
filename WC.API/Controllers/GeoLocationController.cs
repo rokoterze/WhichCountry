@@ -23,7 +23,7 @@ namespace WC.API.Controllers
         private readonly string? _countryDetailsProvider;
         private readonly string? _imagePath;
         private readonly string? _imageExtensionType;
-        
+
 
         public GeoLocationController(WhichCountryContext context, IMapper mapper, IWcService wcService, ILogger<GeoLocationController> logger, IConfiguration configuration)
         {
@@ -50,7 +50,7 @@ namespace WC.API.Controllers
             var listB = new List<GeoLocationInfo>(); // -> Contains mapped objects from listA [CSVUpload -> GeoLocation] 
             var listC = new List<GeoLocationInfo>(); // -> Contains GeoLocations from db by common countryCode
 
-            int uploadSize = _uploadSize != null ? Int32.Parse(_uploadSize) : 0 ; // -> Upload size from appsettings.json
+            int uploadSize = _uploadSize != null ? Int32.Parse(_uploadSize) : 0; // -> Upload size from appsettings.json
             int fileSize; // -> Imported CSV file list size
 
             int counterIndex = uploadSize;
@@ -134,7 +134,7 @@ namespace WC.API.Controllers
                     endIndex = Math.Min(counterIndex, fileSize);
                 }
             }
-            else 
+            else
             {
                 //TODO: Implement if filesize is smaller than upload size.
                 return null!;
@@ -179,12 +179,30 @@ namespace WC.API.Controllers
                 CountryName = countryDetails?.CountryName,
                 CountryRegion = countryDetails?.CountryRegion,
                 CountrySubregion = countryDetails?.CountrySubregion,
-                FlagUrl = countryDetails?.FlagUrl
             };
 
             Log.Information($"GeoLocation: {response}");
 
             return response;
+        }
+
+        [HttpGet("[action]")]
+        public async Task<IActionResult?> GetImage(string countryCode)
+        {
+            try
+            {
+                var image = await System.IO.File.ReadAllBytesAsync(_imagePath + "\\" + countryCode + _imageExtensionType);
+
+                var item = File(image, $"image/{_imageExtensionType}");
+                return item;
+            }
+            catch (Exception ex)
+            {
+                var errorMessage = $"Error retrieving image for Country Code: {countryCode}: {ex.Message}";
+                
+                Log.Error(errorMessage);
+                return StatusCode(500, errorMessage);
+            }
         }
     }
 }

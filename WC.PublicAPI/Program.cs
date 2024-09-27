@@ -11,6 +11,10 @@ using WC.DataAccess.Models;
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 
+
+//CORS
+builder.Services.AddCors();
+
 // API URL:
 var baseURL = configuration["WcApiSettings:BaseUrl"];
 
@@ -66,6 +70,12 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+
+//CORS pipeline
+app.UseCors(options => {
+    options.WithOrigins("http://localhost:4200");
+});
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

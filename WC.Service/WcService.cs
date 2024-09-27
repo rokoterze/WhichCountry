@@ -1,14 +1,11 @@
 ﻿using AutoMapper;
-using Azure.Core;
 using CsvHelper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Identity.Client;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
 using System.Globalization;
 using System.IdentityModel.Tokens.Jwt;
-using System.Net;
 using System.Security.Claims;
 using System.Text;
 using System.Text.Json;
@@ -273,10 +270,18 @@ namespace WC.Service
             try
             {
                 var token = _mapper.Map<Token>(request);
+                var user = _context.Tokens.Where(x => x.UserId == request.UserId).FirstOrDefault();
 
-                await _context.AddAsync(token);
+                if (user == null)
+                {
+                    await _context.Tokens.AddAsync(token);
+                }
+                else 
+                {
+                    user.TokenValue = request.TokenValue;
+                }
+                
                 await _context.SaveChangesAsync();
-
                 return true;
             }
             catch

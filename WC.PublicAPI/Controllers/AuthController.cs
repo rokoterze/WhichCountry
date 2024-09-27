@@ -23,7 +23,7 @@ namespace WC.PublicAPI.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<bool> Register([FromBody] Models.DTO.Request.UserRequest request)
+        public async Task<bool> Register([FromBody] UserRequest request)
         {
             var userFromDb = await _wcService.GetUser(request.Username);
 
@@ -40,7 +40,7 @@ namespace WC.PublicAPI.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<LoginResponse?> Login([FromBody] Models.DTO.Request.UserRequest userRequest)
+        public async Task<LoginResponse?> Login([FromBody] UserRequest userRequest)
         {
             var loginResponse = new LoginResponse();
             var user = await _wcService.GetUser(userRequest.Username);

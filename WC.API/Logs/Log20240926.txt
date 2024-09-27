@@ -1,0 +1,14 @@
+2024-09-26 12:18:22.997 +02:00 [ERR] Error retrieving image for Country Code: 55: Could not find file 'C:\Users\rte\Desktop\WC.Data\Images\Flags\55.png'.
+2024-09-26 12:18:31.860 +02:00 [ERR] Error retrieving image for Country Code: aa: Could not find file 'C:\Users\rte\Desktop\WC.Data\Images\Flags\aa.png'.
+2024-09-26 12:19:00.343 +02:00 [ERR] Error retrieving image for Country Code: rr: Could not find file 'C:\Users\rte\Desktop\WC.Data\Images\Flags\rr.png'.
+2024-09-26 12:19:33.577 +02:00 [ERR] Error retrieving image for Country Code: zz: Could not find file 'C:\Users\rte\Desktop\WC.Data\Images\Flags\zz.png'.
+2024-09-26 12:20:39.367 +02:00 [ERR] Error retrieving image for Country Code: rr: Could not find file 'C:\Users\rte\Desktop\WC.Data\Images\Flags\rr.png'.
+2024-09-26 12:24:11.659 +02:00 [ERR] Error retrieving image for Country Code: hhh: Could not find file 'C:\Users\rte\Desktop\WC.Data\Images\Flags\hhh.png'.
+2024-09-26 13:17:31.898 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocationResponse
+2024-09-26 13:41:02.745 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocationResponse
+2024-09-26 13:41:15.770 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocationResponse
+2024-09-26 13:41:20.221 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocationResponse
+2024-09-26 13:41:31.468 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocationResponse
+2024-09-26 13:51:48.075 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocationResponse
+2024-09-26 15:47:10.461 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocationResponse
+2024-09-26 15:48:48.002 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocationResponse

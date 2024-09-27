@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WC.Models")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d825ab0415c2a00cb96fc50bc9b95a03df28a6a4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3783df2615bee2ff8867508150453a4365b2dc49")]
 [assembly: System.Reflection.AssemblyProductAttribute("WC.Models")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WC.Models")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
