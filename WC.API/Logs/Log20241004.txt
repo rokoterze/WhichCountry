@@ -1,0 +1,31 @@
+2024-10-04 09:41:44.060 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocationResponse
+2024-10-04 14:21:19.979 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-04 14:22:53.171 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-04 14:40:52.555 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-04 14:41:05.015 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-04 14:41:10.205 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-04 14:41:35.527 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-04 14:42:19.857 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-04 14:42:51.404 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-04 14:43:47.251 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-04 14:44:19.400 +02:00 [WRN] Geo Location with numeric IP address: 1493510402 not found.
+2024-10-04 14:44:19.403 +02:00 [WRN] IP address not found: 89.5.41.2
+2024-10-04 14:44:21.260 +02:00 [WRN] Geo Location with numeric IP address: 1493510402 not found.
+2024-10-04 14:44:21.263 +02:00 [WRN] IP address not found: 89.5.41.2
+2024-10-04 14:44:33.526 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-04 14:44:35.284 +02:00 [ERR] IP address format is invalid: 17.225.24.2.
+2024-10-04 14:44:35.839 +02:00 [ERR] IP address format is invalid: 17.225.24.2.
+2024-10-04 14:44:38.155 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-04 14:58:45.949 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-04 15:00:09.565 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-04 15:01:00.424 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-04 15:48:28.519 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-04 15:49:04.773 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-04 15:49:42.754 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-04 16:03:15.711 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-04 16:26:52.603 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-04 16:27:53.309 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-04 16:28:07.584 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-04 16:28:31.268 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-04 16:28:54.127 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-04 16:29:33.416 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation

@@ -6,11 +6,11 @@ using WC.Service.IService;
 
 namespace WC.PublicAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class AuthController : ControllerBase
     {
-        public static User user = new();
+        public static DataAccess.Models.User user = new();
         private readonly IWcService _wcService;
         private readonly string? _secret;
         private readonly string? _expiration;
@@ -40,9 +40,9 @@ namespace WC.PublicAPI.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<LoginResponse?> Login([FromBody] UserRequest userRequest)
+        public async Task<Login?> Login([FromBody] UserRequest userRequest)
         {
-            var loginResponse = new LoginResponse();
+            var loginResponse = new Login();
             var user = await _wcService.GetUser(userRequest.Username);
 
             if (user != null)

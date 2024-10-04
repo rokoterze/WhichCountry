@@ -2,7 +2,7 @@
 
 namespace WC.Models.DTO.Response
 {
-    public class RestCountriesResponse
+    public class RestCountries
     {
         [JsonPropertyName("cca2")]
         public string? CountryCode { get; set; }

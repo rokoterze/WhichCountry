@@ -12,7 +12,7 @@ namespace WC.API
             CreateMap<GeoLocationRequest, GeoLocationInfo>().ReverseMap();
             CreateMap<CsvUpload, GeoLocationInfo>().ReverseMap();
 
-            CreateMap<CountryDetail, RestCountriesResponse>().ReverseMap();
+            CreateMap<CountryDetail, RestCountries>().ReverseMap();
         }
     }
 }

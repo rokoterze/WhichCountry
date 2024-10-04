@@ -1,6 +1,6 @@
 ﻿namespace WC.Models.DTO.Response
 {
-    public class UserResponse
+    public class User
     {
         public int Id { get; set; }
 

@@ -1,0 +1,4 @@
+2024-09-30 10:15:21.985 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocationResponse
+2024-09-30 10:19:54.692 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocationResponse
+2024-09-30 10:29:21.856 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocationResponse
+2024-09-30 11:00:22.546 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocationResponse

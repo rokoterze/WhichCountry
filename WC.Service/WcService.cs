@@ -41,7 +41,7 @@ namespace WC.Service
 
             try
             {
-                var geoLocation = _mapper.Map<GeoLocation>(request);
+                var geoLocation = _mapper.Map<DataAccess.Models.GeoLocation>(request);
 
                 await _context.AddAsync(geoLocation);
                 await _context.SaveChangesAsync();
@@ -53,7 +53,7 @@ namespace WC.Service
             }
             return true;
         }
-        public async Task<GeoLocationResponse?> GetGeoLocation(int numericIpAddress)
+        public async Task<Models.DTO.Response.GeoLocation?> GetGeoLocation(int numericIpAddress)
         {
             try
             {
@@ -68,7 +68,7 @@ namespace WC.Service
                 }
                 else
                 {
-                    var response = _mapper.Map<GeoLocationResponse>(geoLocation);
+                    var response = _mapper.Map<Models.DTO.Response.GeoLocation>(geoLocation);
                     return response;
                 }
             }
@@ -104,7 +104,7 @@ namespace WC.Service
         #endregion
 
         #region CountryDetails
-        public async Task<CountryDetailsResponse?> GetCountry(string? countryCode)
+        public async Task<CountryDetails?> GetCountry(string? countryCode)
         {
             try
             {
@@ -117,7 +117,7 @@ namespace WC.Service
                 }
                 else
                 {
-                    var response = _mapper.Map<CountryDetailsResponse>(country);
+                    var response = _mapper.Map<CountryDetails>(country);
                     return response;
                 }
             }
@@ -184,7 +184,7 @@ namespace WC.Service
 
             return true;
         }
-        public async Task<RestCountriesResponse?> GetCountryDetailsFromProvider(string? countryCode, string? provider)
+        public async Task<RestCountries?> GetCountryDetailsFromProvider(string? countryCode, string? provider)
         {
             try
             {
@@ -192,7 +192,7 @@ namespace WC.Service
                 response.EnsureSuccessStatusCode();
 
                 string responseBody = await response.Content.ReadAsStringAsync();
-                var deserialized = JsonSerializer.Deserialize<List<RestCountriesResponse>>(responseBody)!;
+                var deserialized = JsonSerializer.Deserialize<List<RestCountries>>(responseBody)!;
 
                 return deserialized?.FirstOrDefault();
             }
@@ -205,7 +205,7 @@ namespace WC.Service
         #endregion
 
         #region User and Token
-        public string GenerateToken(UserResponse user, string secret, DateTime expiration)
+        public string GenerateToken(Models.DTO.Response.User user, string secret, DateTime expiration)
         {
             List<Claim> claims =
             [
@@ -225,7 +225,7 @@ namespace WC.Service
 
             return jwt;
         }
-        public async Task<UserResponse> GetUser(string username)
+        public async Task<Models.DTO.Response.User> GetUser(string username)
         {
             try
             {
@@ -237,7 +237,7 @@ namespace WC.Service
                 }
                 else
                 {
-                    var response = _mapper.Map<UserResponse>(request);
+                    var response = _mapper.Map<Models.DTO.Response.User>(request);
                     return response;
                 }
             }
@@ -251,7 +251,7 @@ namespace WC.Service
         {
             try
             {
-                var user = _mapper.Map<User>(request);
+                var user = _mapper.Map<DataAccess.Models.User>(request);
                 user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(request.Password);
 
                 await _context.AddAsync(user);

@@ -10,17 +10,17 @@ namespace WC.Service
         public AutoMapperConfig()
         {
             CreateMap<GeoLocationRequest, GeoLocationInfo>().ReverseMap();
-            CreateMap<GeoLocationRequest, GeoLocation>();
+            CreateMap<GeoLocationRequest, DataAccess.Models.GeoLocation>();
             CreateMap<GeoLocationInfo, CsvUpload>().ReverseMap();
 
-            CreateMap<GeoLocation, GeoLocationInfo>().ReverseMap();
-            CreateMap<GeoLocation, GeoLocationResponse>().ReverseMap();
+            CreateMap<DataAccess.Models.GeoLocation, GeoLocationInfo>().ReverseMap();
+            CreateMap<DataAccess.Models.GeoLocation, Models.DTO.Response.GeoLocation>().ReverseMap();
 
-            CreateMap<CountryDetail, RestCountriesResponse>().ReverseMap();
-            CreateMap<CountryDetail, CountryDetailsResponse>().ReverseMap();
+            CreateMap<CountryDetail, RestCountries>().ReverseMap();
+            CreateMap<CountryDetail, CountryDetails>().ReverseMap();
 
-            CreateMap<UserRequest, User>();
-            CreateMap<User, UserResponse>();
+            CreateMap<UserRequest, DataAccess.Models.User>();
+            CreateMap<DataAccess.Models.User, Models.DTO.Response.User>();
 
             CreateMap<TokenRequest, Token>();
         }

@@ -74,17 +74,55 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/GeoLocationResponse"
+                  "$ref": "#/components/schemas/GeoLocation"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GeoLocationResponse"
+                  "$ref": "#/components/schemas/GeoLocation"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GeoLocationResponse"
+                  "$ref": "#/components/schemas/GeoLocation"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GeoLocation/GetCountryFlag": {
+      "get": {
+        "tags": [
+          "GeoLocation"
+        ],
+        "parameters": [
+          {
+            "name": "countryCode",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FileResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FileResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FileResult"
                 }
               }
             }
@@ -117,7 +155,26 @@
         },
         "additionalProperties": false
       },
-      "GeoLocationResponse": {
+      "FileResult": {
+        "type": "object",
+        "properties": {
+          "fileName": {
+            "type": "string",
+            "nullable": true
+          },
+          "content": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true
+          },
+          "mimeType": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GeoLocation": {
         "type": "object",
         "properties": {
           "countryCode": {
@@ -133,10 +190,6 @@
             "nullable": true
           },
           "countrySubregion": {
-            "type": "string",
-            "nullable": true
-          },
-          "flagUrl": {
             "type": "string",
             "nullable": true
           }

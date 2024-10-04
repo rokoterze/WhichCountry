@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Azure.Core;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
 using System.Diagnostics;
@@ -7,6 +8,7 @@ using WC.DataAccess.Models;
 using WC.Models.DTO.Request;
 using WC.Models.DTO.Response;
 using WC.Service.IService;
+using static Azure.Core.HttpHeader;
 
 namespace WC.API.Controllers
 {
@@ -147,7 +149,7 @@ namespace WC.API.Controllers
         }
 
         [HttpGet("[action]")]
-        public async Task<GeoLocationResponse?> IPAddressGeoLocation(string ipAddress)
+        public async Task<Models.DTO.Response.GeoLocation?> IPAddressGeoLocation([FromQuery] string ipAddress)
         {
             if (!IPAddress.TryParse(ipAddress, out _))
             {
@@ -173,7 +175,7 @@ namespace WC.API.Controllers
                 Log.Error($"Country details are not found: {geoLocation.CountryCode}");
             }
 
-            var response = new GeoLocationResponse
+            var response = new Models.DTO.Response.GeoLocation
             {
                 CountryCode = geoLocation.CountryCode,
                 CountryName = countryDetails?.CountryName,
@@ -186,23 +188,36 @@ namespace WC.API.Controllers
             return response;
         }
 
+    
         [HttpGet("[action]")]
-        public async Task<IActionResult?> GetImage(string countryCode)
+        public async Task<Models.DTO.Response.FileResult?> GetCountryFlag([FromQuery] string countryCode)
         {
             try
             {
                 var image = await System.IO.File.ReadAllBytesAsync(_imagePath + "\\" + countryCode + _imageExtensionType);
+                
+                var file = new Models.DTO.Response.FileResult()
+                {
+                    FileName = $"{countryCode}{_imageExtensionType}",
+                    Content = image,
+                    MimeType = "image/png"
+                };
 
-                var item = File(image, $"image/{_imageExtensionType}");
-                return item;
+                if (file == null || file.Content == null)
+                {
+                    return null;
+                }
+
+                return file;
             }
             catch (Exception ex)
             {
                 var errorMessage = $"Error retrieving image for Country Code: {countryCode}: {ex.Message}";
-                
+
                 Log.Error(errorMessage);
-                return StatusCode(500, errorMessage);
+                return null;
             }
         }
+
     }
 }
