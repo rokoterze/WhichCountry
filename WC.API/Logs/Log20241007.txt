@@ -1,0 +1,12 @@
+2024-10-07 12:45:19.436 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-07 12:46:11.495 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-07 12:46:30.441 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-07 13:12:19.167 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-07 13:20:56.735 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-07 13:21:39.973 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-07 13:21:45.193 +02:00 [WRN] Geo Location with numeric IP address: 923272709 not found.
+2024-10-07 13:21:45.197 +02:00 [WRN] IP address not found: 55.8.6.5
+2024-10-07 13:21:56.057 +02:00 [WRN] Geo Location with numeric IP address: -1086908924 not found.
+2024-10-07 13:21:56.059 +02:00 [WRN] IP address not found: 191.55.22.4
+2024-10-07 13:22:28.761 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-07 13:48:21.485 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation

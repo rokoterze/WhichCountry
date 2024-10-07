@@ -13,7 +13,15 @@ var configuration = builder.Configuration;
 
 
 //CORS
-builder.Services.AddCors();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin",
+        builder => builder
+            .WithOrigins("http://localhost:4200")
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials());
+});
 
 // API URL:
 var baseURL = configuration["WcApiSettings:BaseUrl"];
@@ -72,9 +80,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 
 //CORS pipeline
-app.UseCors(options => {
-    options.WithOrigins("http://localhost:4200");
-});
+app.UseCors("AllowSpecificOrigin");
 
 if (app.Environment.IsDevelopment())
 {
