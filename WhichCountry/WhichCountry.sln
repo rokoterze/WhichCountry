@@ -19,11 +19,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WC.Models", "..\WC.Models\W
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Models", "Models", "{A4D8C436-5FE1-4D91-8FF7-FAD6DEA7EB08}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{4F938AC4-651C-471E-BBF2-D0712C553A0B}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\WhichCountry_Inital.sql = ..\..\WhichCountry_Inital.sql
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
