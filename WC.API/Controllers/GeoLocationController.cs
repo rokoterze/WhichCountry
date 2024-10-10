@@ -219,5 +219,11 @@ namespace WC.API.Controllers
             }
         }
 
+        [HttpPost("[action]")]
+        public async Task<bool> UpdateUserPlan(UserPlanRequest userPlanRequest)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

@@ -247,7 +247,7 @@ namespace WC.Service
                 return null!;
             }
         }
-        public async Task<bool> UserInsert(UserRequest request)
+        public async Task<bool> UserInsert(RegisterRequest request)
         {
             try
             {
@@ -287,6 +287,25 @@ namespace WC.Service
             catch
             {
                 Log.Error($"Failed to save token to database.");
+                return false;
+            }
+        }
+        #endregion
+
+        #region Plans
+        public async Task<bool> UserPlanInsert(UserPlanRequest userPlanRequest)
+        {
+            try
+            {
+                var request = _mapper.Map<UserPlan>(userPlanRequest); //TODO: Error while mapping Enum (Plan -> PlanId)
+                await _context.UserPlans.AddAsync(request);
+                await _context.SaveChangesAsync();
+                
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"CSV file convert failed:" + ex.Message);
                 return false;
             }
         }

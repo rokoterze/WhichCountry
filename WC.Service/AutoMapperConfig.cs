@@ -19,10 +19,19 @@ namespace WC.Service
             CreateMap<CountryDetail, RestCountries>().ReverseMap();
             CreateMap<CountryDetail, CountryDetails>().ReverseMap();
 
-            CreateMap<UserRequest, DataAccess.Models.User>();
+            CreateMap<RegisterRequest, DataAccess.Models.User>();
             CreateMap<DataAccess.Models.User, Models.DTO.Response.User>();
 
             CreateMap<TokenRequest, Token>();
+
+            CreateMap<UserPlanRequest, UserPlan>()
+                .ForMember
+                (
+                    dest => dest.PlanId,
+                    map => map.MapFrom(src => (int)src.Plan)
+                )
+                .ForAllMembers(x => x.Condition((src, dest, member) => member != null));
+                ;
         }
     }
 }

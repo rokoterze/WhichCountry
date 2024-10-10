@@ -10,3 +10,43 @@
 2024-10-07 13:21:56.059 +02:00 [WRN] IP address not found: 191.55.22.4
 2024-10-07 13:22:28.761 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
 2024-10-07 13:48:21.485 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-07 16:00:53.151 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-07 16:01:06.849 +02:00 [ERR] Failed to convert IP address to integer:System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at WC.Service.WcService.ConvertIpToNumber(String ipAddress) in C:\Users\rte\Desktop\WhichCountry\WC.Service\WcService.cs:line 319
+2024-10-07 16:01:06.913 +02:00 [WRN] Country with Country Code: ZZ not found.
+2024-10-07 16:01:06.916 +02:00 [ERR] Country details are not found: ZZ
+2024-10-07 16:01:06.919 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-07 16:01:07.219 +02:00 [ERR] Error retrieving image for Country Code: ZZ: Could not find file 'C:\Users\rte\Desktop\WC.Data\Images\Flags\ZZ.png'.
+2024-10-07 16:01:15.102 +02:00 [ERR] Failed to convert IP address to integer:System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at WC.Service.WcService.ConvertIpToNumber(String ipAddress) in C:\Users\rte\Desktop\WhichCountry\WC.Service\WcService.cs:line 319
+2024-10-07 16:01:15.223 +02:00 [WRN] Country with Country Code: ZZ not found.
+2024-10-07 16:01:15.224 +02:00 [ERR] Country details are not found: ZZ
+2024-10-07 16:01:15.226 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-07 16:01:15.401 +02:00 [ERR] Error retrieving image for Country Code: ZZ: Could not find file 'C:\Users\rte\Desktop\WC.Data\Images\Flags\ZZ.png'.
+2024-10-07 16:01:24.170 +02:00 [WRN] Geo Location with numeric IP address: 1649947650 not found.
+2024-10-07 16:01:24.183 +02:00 [WRN] IP address not found: 98.88.52.2
+2024-10-07 16:03:12.576 +02:00 [WRN] Geo Location with numeric IP address: 1649947650 not found.
+2024-10-07 16:03:12.579 +02:00 [WRN] IP address not found: 98.88.52.2
+2024-10-07 16:03:24.982 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-07 16:03:34.257 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-07 16:10:20.580 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-07 16:10:24.316 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-07 16:12:29.712 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-07 16:16:48.222 +02:00 [ERR] IP address format is invalid: 5.5.5.5.
+2024-10-07 16:16:54.507 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-07 16:17:42.048 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-07 16:22:09.531 +02:00 [ERR] IP address format is invalid: 5.5..5.5
+2024-10-07 16:22:11.123 +02:00 [ERR] IP address format is invalid: 5.5..5.5
+2024-10-07 16:22:14.803 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-07 16:22:28.834 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-07 16:27:04.125 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-07 16:28:33.510 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-07 16:29:40.026 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-07 16:34:10.393 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-07 16:34:40.332 +02:00 [ERR] IP address format is invalid: 5.5.5.5.
+2024-10-07 16:34:41.978 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-07 16:35:18.009 +02:00 [ERR] IP address format is invalid: 5.5.5.5.
+2024-10-07 16:35:18.971 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-07 16:38:54.620 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-07 16:42:44.505 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation
+2024-10-07 16:43:27.843 +02:00 [INF] GeoLocation: WC.Models.DTO.Response.GeoLocation

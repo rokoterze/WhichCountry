@@ -23,7 +23,15 @@
          "ObjectType": 0
       },
       {
+         "Name": "[dbo].[Plans]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[dbo].[Tokens]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[UserPlans]",
          "ObjectType": 0
       },
       {

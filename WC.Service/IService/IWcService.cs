@@ -20,9 +20,14 @@ namespace WC.Service.IService
         #endregion
 
         #region User and Token
-        Task<bool> UserInsert(UserRequest user);
+        Task<bool> UserInsert(RegisterRequest user);
         Task<User> GetUser(string username);
         Task<bool> TokenInsert(TokenRequest token);
+        #endregion
+
+        #region Plans
+        Task<bool> UserPlanInsert(UserPlanRequest userPlanRequest);
+        Task<bool> UserPlanHistoryInsert()
         #endregion
 
         #region Helpers

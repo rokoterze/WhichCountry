@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WC.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bbf9046357a7bbdf9c20df20623328a99043d23c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+af3792190fd660ca0c68c8fe2b41a7f6be3b39a1")]
 [assembly: System.Reflection.AssemblyProductAttribute("WC.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WC.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

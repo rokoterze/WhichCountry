@@ -7,7 +7,7 @@ namespace WC.DataAccess.Models;
 
 public partial class Token
 {
-    public int Id { get; set; }
+    public int TokenId { get; set; }
 
     public int UserId { get; set; }
 

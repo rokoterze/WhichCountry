@@ -7,7 +7,7 @@ namespace WC.DataAccess.Models;
 
 public partial class GeoLocation
 {
-    public int Id { get; set; }
+    public int GeoLocationId { get; set; }
 
     public string StartIp { get; set; }
 

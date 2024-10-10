@@ -23,15 +23,25 @@ namespace WC.PublicAPI.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<bool> Register([FromBody] UserRequest request)
+        public async Task<bool> Register([FromBody] RegisterRequest registerRequest)
         {
-            var userFromDb = await _wcService.GetUser(request.Username);
+            var user = await _wcService.GetUser(registerRequest.Username);
 
-            if (userFromDb == null)
+            if (user == null)
             {
-                var result = await _wcService.UserInsert(request);
+                //TODO: Optimize, less db requests (..GetUser)
+                var userInsert = await _wcService.UserInsert(registerRequest);
+                var userFromDb = await _wcService.GetUser(registerRequest.Username);
 
-                if (result == true)
+                var userPlanRequest = new UserPlanRequest
+                {
+                    UserId = userFromDb.UserId,
+                    Plan = registerRequest.Plan
+                };
+
+                var planInsert = await _wcService.UserPlanInsert(userPlanRequest);
+
+                if (userInsert == true && planInsert == true)
                 {
                     return true;
                 }
@@ -40,14 +50,14 @@ namespace WC.PublicAPI.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<Login?> Login([FromBody] UserRequest userRequest)
+        public async Task<Login?> Login([FromBody] LoginRequest loginRequest)
         {
             var loginResponse = new Login();
-            var user = await _wcService.GetUser(userRequest.Username);
+            var user = await _wcService.GetUser(loginRequest.Username);
 
             if (user != null)
             {
-                if (BCrypt.Net.BCrypt.Verify(userRequest.Password, user.PasswordHash))
+                if (BCrypt.Net.BCrypt.Verify(loginRequest.Password, user.PasswordHash))
                 {
                     var creation = DateTime.Now;
                     var expiration = creation.AddDays(Int32.Parse(_expiration!));
@@ -58,7 +68,7 @@ namespace WC.PublicAPI.Controllers
                     {
                         var token = new TokenRequest
                         {
-                            UserId = user.Id,
+                            UserId = user.UserId,
                             CreatedAt = creation,
                             ValidUntil = expiration,
                             TokenValue = tokenValue

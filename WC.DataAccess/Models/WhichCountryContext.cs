@@ -17,17 +17,20 @@ public partial class WhichCountryContext : DbContext
 
     public virtual DbSet<GeoLocation> GeoLocations { get; set; }
 
+    public virtual DbSet<Plan> Plans { get; set; }
+
     public virtual DbSet<Token> Tokens { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
+
+    public virtual DbSet<UserPlan> UserPlans { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<CountryDetail>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__CountryD__3214EC271474178B");
+            entity.HasKey(e => e.CountryDetailsId).HasName("PK__CountryD__3214EC271474178B");
 
-            entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.CountryCode)
                 .HasMaxLength(64)
                 .IsUnicode(false);
@@ -51,11 +54,10 @@ public partial class WhichCountryContext : DbContext
 
         modelBuilder.Entity<GeoLocation>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__GeoLocat__3214EC272FDF6EB1");
+            entity.HasKey(e => e.GeoLocationId).HasName("PK__GeoLocat__3214EC272FDF6EB1");
 
             entity.ToTable("GeoLocation");
 
-            entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.CountryCode)
                 .HasMaxLength(64)
                 .IsUnicode(false);
@@ -71,11 +73,25 @@ public partial class WhichCountryContext : DbContext
             entity.Property(e => e.StartIpnumber).HasColumnName("StartIPNumber");
         });
 
+        modelBuilder.Entity<Plan>(entity =>
+        {
+            entity.HasKey(e => e.PlanId).HasName("PK__Plans__755C22B7CFEB5C53");
+
+            entity.Property(e => e.PlanId).ValueGeneratedNever();
+            entity.Property(e => e.PlanDescription)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.PlanName)
+                .IsRequired()
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.Price).HasColumnType("decimal(10, 2)");
+        });
+
         modelBuilder.Entity<Token>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Tokens__3214EC27FD69A2CF");
+            entity.HasKey(e => e.TokenId).HasName("PK__Tokens__3214EC27FD69A2CF");
 
-            entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.CreatedAt).HasColumnType("datetime");
             entity.Property(e => e.TokenValue)
                 .IsRequired()
@@ -86,16 +102,37 @@ public partial class WhichCountryContext : DbContext
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Users__3214EC273C888B8F");
+            entity.HasKey(e => e.UserId).HasName("PK__Users__1788CC4C8AFBF306");
 
-            entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.CreatedAt).HasColumnType("datetime");
+            entity.Property(e => e.Email)
+                .IsRequired()
+                .HasMaxLength(128)
+                .IsUnicode(false);
+            entity.Property(e => e.FirstName)
+                .IsRequired()
+                .HasMaxLength(128)
+                .IsUnicode(false);
+            entity.Property(e => e.LastName)
+                .IsRequired()
+                .HasMaxLength(128)
+                .IsUnicode(false);
             entity.Property(e => e.PasswordHash)
+                .IsRequired()
                 .HasMaxLength(512)
                 .IsUnicode(false);
             entity.Property(e => e.Username)
+                .IsRequired()
                 .HasMaxLength(128)
                 .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<UserPlan>(entity =>
+        {
+            entity.HasKey(e => e.UserPlanId).HasName("PK__UserPlan__B2231FE116F01392");
+
+            entity.Property(e => e.PlanEnd).HasColumnType("datetime");
+            entity.Property(e => e.PlanStart).HasColumnType("datetime");
         });
 
         OnModelCreatingPartial(modelBuilder);

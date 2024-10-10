@@ -7,7 +7,7 @@ namespace WC.DataAccess.Models;
 
 public partial class CountryDetail
 {
-    public int Id { get; set; }
+    public int CountryDetailsId { get; set; }
 
     public string CountryCode { get; set; }
 
